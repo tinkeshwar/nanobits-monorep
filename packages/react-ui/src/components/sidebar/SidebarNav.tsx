@@ -1,4 +1,5 @@
-import React, { createContext, forwardRef, HTMLAttributes, useState } from 'react'
+import React, { HTMLAttributes, createContext, forwardRef, useState } from 'react'
+
 import PropTypes from 'prop-types'
 import classNames from 'classnames'
 
@@ -29,7 +30,7 @@ export const SidebarNav = forwardRef<HTMLUListElement, SidebarNavProps>(
         <NavContext.Provider value={NavContextValues}>
           {React.Children.map(children, (child, index) => {
             if (React.isValidElement(child)) {
-              return React.cloneElement(child, { key: index, idx: `${index}` })
+              return React.cloneElement(child, { key: index, idx: `${index}` } as any)
             }
             return
           })}

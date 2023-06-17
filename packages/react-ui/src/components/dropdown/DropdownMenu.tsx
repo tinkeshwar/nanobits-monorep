@@ -1,10 +1,10 @@
-import React, { ElementType, FC, HTMLAttributes, useContext, useEffect, useRef } from 'react'
-import PropTypes from 'prop-types'
-import classNames from 'classnames'
+import { Alignments, DropdownContext } from './Dropdown'
 import { Popper, PopperChildrenProps } from 'react-popper'
+import React, { ElementType, FC, HTMLAttributes, useContext, useEffect, useRef } from 'react'
 
 import { Placements } from '../Types'
-import { Alignments, DropdownContext } from './Dropdown'
+import PropTypes from 'prop-types'
+import classNames from 'classnames'
 
 export interface DropdownMenuProps
   extends HTMLAttributes<HTMLDivElement | HTMLUListElement>,
@@ -102,7 +102,7 @@ export const DropdownMenu: FC<DropdownMenuProps> = ({
     _placement = 'bottom-end'
   }
 
-  const alignmentClassNames = (alignment: Alignments) => {
+  const alignmentClassNames = (alignment: Alignments|any) => {
     const classNames: string[] = []
     if (typeof alignment === 'object') {
       Object.keys(alignment).map((key) => {

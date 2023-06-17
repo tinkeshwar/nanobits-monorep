@@ -1,11 +1,11 @@
+import React, { HTMLAttributes, forwardRef, useCallback, useEffect, useRef, useState } from 'react'
+
+import { Backdrop } from '../backdrop/Backdrop'
 import PropTypes from 'prop-types'
-import React, { forwardRef, HTMLAttributes, useCallback, useEffect, useRef, useState } from 'react'
-import { createPortal } from 'react-dom'
 import { Transition } from 'react-transition-group'
 import classNames from 'classnames'
-
+import { createPortal } from 'react-dom'
 import { useForkedRef } from '../../utils/hooks'
-import { Backdrop } from '../backdrop/Backdrop'
 
 export interface OffcanvasProps extends HTMLAttributes<HTMLDivElement> {
   /**
@@ -101,7 +101,7 @@ export const Offcanvas = forwardRef<HTMLDivElement, OffcanvasProps>(
       entered: { visibility: 'visible' },
       exiting: { visibility: 'visible' },
       exited: { visibility: 'hidden' },
-    }
+    } as any
 
     const handleDismiss = () => {
       setVisible(false)

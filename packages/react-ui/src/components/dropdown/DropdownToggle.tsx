@@ -1,14 +1,12 @@
+import { Button, ButtonProps } from '../button/Button'
 import React, { FC, useContext } from 'react'
-import PropTypes from 'prop-types'
-import classNames from 'classnames'
-import { Reference } from 'react-popper'
-
-import { useForkedRef } from '../../utils/hooks'
-
 import { Triggers, triggerPropType } from '../Types'
 
-import { Button, ButtonProps } from '../button/Button'
 import { DropdownContext } from './Dropdown'
+import PropTypes from 'prop-types'
+import { Reference } from 'react-popper'
+import classNames from 'classnames'
+import { useForkedRef } from '../../utils/hooks'
 
 export interface DropdownToggleProps extends Omit<ButtonProps, 'type'> {
   /**
@@ -80,7 +78,7 @@ export const DropdownToggle: FC<DropdownToggleProps> = ({
           'aria-expanded': visible,
           ...(!rest.disabled && { ...triggers }),
           ref: useForkedRef(ref, dropdownToggleRef),
-        })}
+        } as any)}
       </>
     ) : variant === 'nav-item' ? (
       <a href="#" {...togglerProps} ref={useForkedRef(ref, dropdownToggleRef)}>

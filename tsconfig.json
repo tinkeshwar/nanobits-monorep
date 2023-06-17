@@ -16,7 +16,15 @@
     "strictNullChecks": true,
     "noUnusedLocals": true,
     "noUnusedParameters": true,
-    "esModuleInterop": true
+    "esModuleInterop": true,
+    "paths": {
+      "@nanobits/react-ui": ["./packages/react-ui/src"],
+      "@nanobits/react-ui/*": ["./packages/react-ui/src/*"],
+      "@nanobits/react-components": ["./packages/react-components/src"],
+      "@nanobits/react-components/*": ["./packages/react-components/src/*"],
+      "@nanobits/react-fa-icons": ["./packages/react-fa-icons/src"],
+      "@nanobits/react-fa-icons/*": ["./packages/react-fa-icons/src/*"]
+    }
   },
   "exclude": ["**/node_modules", "**/dist"]
 }

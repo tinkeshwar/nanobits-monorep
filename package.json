@@ -4,8 +4,13 @@
   "workspaces": [
     "packages/*"
   ],
+  "scripts": {
+    "build": "lerna run build --stream"
+  },
   "devDependencies": {
     "lerna": "^6.0.1",
+    "rollup-plugin-typescript2": "^0.34.1",
+    "tslib": "^2.5.3",
     "typescript": "^5.1.3"
   }
 }

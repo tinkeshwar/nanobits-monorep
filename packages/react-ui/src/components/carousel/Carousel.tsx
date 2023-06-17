@@ -1,12 +1,13 @@
 import React, {
   Children,
+  HTMLAttributes,
   createContext,
   forwardRef,
-  HTMLAttributes,
-  useState,
   useEffect,
   useRef,
+  useState,
 } from 'react'
+
 import PropTypes from 'prop-types'
 import classNames from 'classnames'
 import { useForkedRef } from '../../utils/hooks'
@@ -236,10 +237,10 @@ export const Carousel = forwardRef<HTMLDivElement, CarouselProps>(
             {Children.map(children, (child, index) => {
               if (React.isValidElement(child)) {
                 return React.cloneElement(child, {
-                  active: active === index ? true : false,
+                  active: active === index,
                   direction: direction,
                   key: index,
-                })
+                } as any)
               }
               return
             })}

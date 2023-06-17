@@ -1,17 +1,18 @@
 import React, {
   CSSProperties,
-  forwardRef,
   ReactNode,
+  forwardRef,
   useContext,
   useEffect,
   useRef,
   useState,
 } from 'react'
-import PropTypes from 'prop-types'
-import classNames from 'classnames'
-import { Transition } from 'react-transition-group'
 
 import { NavContext } from '../sidebar/SidebarNav'
+import PropTypes from 'prop-types'
+import { Transition } from 'react-transition-group'
+import classNames from 'classnames'
+
 export interface NavGroupProps {
   children?: ReactNode
   /**
@@ -93,7 +94,7 @@ export const NavGroup = forwardRef<HTMLLIElement, NavGroupProps>(
       entered: { display: 'block', height: height },
       exiting: { display: 'block', height: height },
       exited: { height: height },
-    }
+    } as any
 
     const _className = classNames('nav-group', { show: _visible }, className)
 
@@ -124,7 +125,7 @@ export const NavGroup = forwardRef<HTMLLIElement, NavGroupProps>(
             >
               {React.Children.map(children, (child, index) => {
                 if (React.isValidElement(child)) {
-                  return React.cloneElement(child, { key: index, idx: `${idx}.${index}` })
+                  return React.cloneElement(child, { key: index, idx: `${idx}.${index}` } as any)
                 }
                 return
               })}
