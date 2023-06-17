@@ -19,6 +19,9 @@
   "bugs": {
     "url": "https://github.com/tinkeshwar/nanobits-monorep/issues"
   },
+  "publishConfig": {
+    "access": "public"
+  },
   "scripts": {
     "build": "rollup -c"
   },
