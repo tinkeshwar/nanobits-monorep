@@ -1,9 +1,10 @@
-import React, { forwardRef, ButtonHTMLAttributes } from 'react'
+import { Button, Spinner } from '@nanobits/react-ui'
+import React, { ButtonHTMLAttributes, forwardRef } from 'react'
+
+import { ButtonProps } from '@nanobits/react-ui/components/button/Button'
+import Icon from '@nanobits/react-fa-icons'
 import PropTypes from 'prop-types'
 import classNames from 'classnames'
-import { Button, Spinner } from 'nanobits-react-ui'
-import Icon from 'nanobits-react-icons'
-import { ButtonProps } from 'nanobits-react-ui/components/button/Button'
 
 export interface NButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
     className?: string

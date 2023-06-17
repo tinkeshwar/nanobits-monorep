@@ -1,8 +1,9 @@
-import React, { forwardRef, ReactNode } from 'react'
+import { Card, CardBody, Div } from '@nanobits/react-ui'
+import React, { ReactNode, forwardRef } from 'react'
+
+import Icon from '@nanobits/react-fa-icons'
 import PropTypes from 'prop-types'
 import classNames from 'classnames'
-import { Card, CardBody, Div } from 'nanobits-react-ui'
-import Icon from 'nanobits-react-icons'
 
 export interface WButtonProps {
     className?: string

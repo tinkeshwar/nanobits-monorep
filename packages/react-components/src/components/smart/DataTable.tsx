@@ -1,8 +1,9 @@
-import classNames from 'classnames'
-import { Table, TableHead, TableRow, TableHeaderCell, TableBody, TableDataCell, FormCheck } from 'nanobits-react-ui'
+import { FormCheck, Table, TableBody, TableDataCell, TableHead, TableHeaderCell, TableRow } from '@nanobits/react-ui'
 import React, { forwardRef } from 'react'
+
 import { DataPaginate } from './DataPagination'
 import PropTypes from 'prop-types'
+import classNames from 'classnames'
 
 export interface DataTableProps {
     className?: string,
@@ -50,7 +51,7 @@ export const DataTable = forwardRef<HTMLTableElement, DataTableProps>((
 
   const handleDoubleClick = (item: any) => {
     if(onRowClick){
-      let primaryKey = {}
+      let primaryKey = {} as any
       if(primary){
         primary.forEach(key => {
           primaryKey[key] = item[key]

@@ -1,8 +1,9 @@
-import classNames from "classnames";
-import { FormFeedback, FormInput, InputGroup } from "nanobits-react-ui";
-import React, { forwardRef, InputHTMLAttributes, useEffect, useRef, useState } from "react";
+import { FormFeedback, FormInput, InputGroup } from "@nanobits/react-ui";
 import { Label, Prefix, Suffix } from "../label";
-import { FormInputProps } from 'nanobits-react-ui/components/form/FormInput';
+import React, { InputHTMLAttributes, forwardRef, useEffect, useRef, useState } from "react";
+
+import { FormInputProps } from "@nanobits/react-ui/components/form/FormInput";
+import classNames from "classnames";
 
 export interface AutoCompleteProps extends InputHTMLAttributes<HTMLInputElement> {
     className?: string,

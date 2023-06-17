@@ -1,7 +1,8 @@
-import React, { forwardRef, InputHTMLAttributes, useState } from 'react';
-import { FormCheck } from 'nanobits-react-ui';
+import React, { InputHTMLAttributes, forwardRef, useState } from 'react';
+
+import { FormCheck } from '@nanobits/react-ui';
+import { Label } from '../label';
 import classNames from 'classnames';
-import { Label } from 'nanobits-react-components';
 
 interface CheckItems {
     value: string 

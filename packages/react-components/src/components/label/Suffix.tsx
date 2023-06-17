@@ -1,7 +1,8 @@
-import React, { forwardRef, InputHTMLAttributes } from 'react'
+import React, { InputHTMLAttributes, forwardRef } from 'react'
+
+import Icon from '@nanobits/react-fa-icons'
+import { InputGroupText } from '@nanobits/react-ui'
 import classNames from 'classnames'
-import { InputGroupText } from 'nanobits-react-ui'
-import Icon from 'nanobits-react-icons'
 
 export interface SuffixPros extends InputHTMLAttributes<HTMLLabelElement>{
     icon?: string

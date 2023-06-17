@@ -1,7 +1,8 @@
-import React, { forwardRef, InputHTMLAttributes } from 'react';
-import { FormCheck } from 'nanobits-react-ui';
+import React, { InputHTMLAttributes, forwardRef } from 'react';
+
+import { FormCheck } from '@nanobits/react-ui';
+import { Label } from '../label';
 import classNames from 'classnames';
-import { Label } from 'nanobits-react-components';
 
 interface RadioItems {
     value: string 

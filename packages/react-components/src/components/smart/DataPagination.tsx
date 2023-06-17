@@ -1,8 +1,9 @@
+import { Pagination, PaginationItem } from '@nanobits/react-ui'
 import React, { forwardRef } from 'react'
+
+import { PaginationProps } from '@nanobits/react-ui/components/pagination/Pagination'
 import PropTypes from 'prop-types'
 import classNames from 'classnames'
-import { Pagination, PaginationItem } from 'nanobits-react-ui'
-import { PaginationProps } from 'nanobits-react-ui/components/pagination/Pagination'
 
 export interface MetaInterfaceProps {
     total: number,

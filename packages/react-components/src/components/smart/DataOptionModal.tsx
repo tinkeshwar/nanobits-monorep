@@ -1,9 +1,10 @@
+import { Col, Modal, ModalBody, Row } from "@nanobits/react-ui";
 import React, { forwardRef } from "react";
-import { Col, Modal, ModalBody, Row } from "nanobits-react-ui";
-import { ModalProps } from "nanobits-react-ui/components/modal/Modal";
+
+import { ModalProps } from "@nanobits/react-ui/components/modal/Modal";
 import PropTypes from 'prop-types';
-import classNames from "classnames";
 import { WButton } from "../button";
+import classNames from "classnames";
 
 export interface DataOptionModalProps extends ModalProps{
     visible: boolean

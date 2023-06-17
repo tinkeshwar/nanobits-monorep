@@ -1,5 +1,6 @@
-import React, { forwardRef, InputHTMLAttributes } from 'react'
-import { FormLabel } from 'nanobits-react-ui'
+import React, { InputHTMLAttributes, forwardRef } from 'react'
+
+import { FormLabel } from '@nanobits/react-ui'
 import classNames from 'classnames'
 
 export interface LabelPros extends InputHTMLAttributes<HTMLLabelElement>{

@@ -1,9 +1,9 @@
-import React, { forwardRef, InputHTMLAttributes, useEffect, useRef, useState } from "react";
-import { FormSelectProps } from "nanobits-react-ui/components/form/FormSelect";
+import { FormFeedback, FormSelect, InputGroup } from "@nanobits/react-ui";
 import { Label, Prefix, Suffix } from "../label";
-import { InputGroup, FormFeedback } from "nanobits-react-ui";
+import React, { InputHTMLAttributes, forwardRef, useEffect, useRef, useState } from "react";
+
+import { FormSelectProps } from "@nanobits/react-ui/components/form/FormSelect";
 import classNames from "classnames";
-import { FormSelect } from "nanobits-react-ui";
 
 export interface SelectOptionProps {
     value: string

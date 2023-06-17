@@ -1,10 +1,11 @@
+import { Modal, ModalBody, ModalFooter, ModalHeader, ModalTitle } from "@nanobits/react-ui";
 import React, { forwardRef } from "react";
-import { Modal, ModalBody, ModalFooter, ModalHeader, ModalTitle } from "nanobits-react-ui";
-import { ModalProps } from "nanobits-react-ui/components/modal/Modal";
+
+import Icon from "@nanobits/react-fa-icons";
+import { ModalProps } from "@nanobits/react-ui/dist/components/modal/Modal";
+import { NButton } from "../button";
 import PropTypes from 'prop-types'
 import classNames from "classnames";
-import Icon from "nanobits-react-icons";
-import { NButton } from "../button";
 
 export interface DataModalProps extends ModalProps{
     title: string
