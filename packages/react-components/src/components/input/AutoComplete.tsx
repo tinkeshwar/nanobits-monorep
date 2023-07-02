@@ -4,7 +4,6 @@ import React, { InputHTMLAttributes, forwardRef, useEffect, useRef, useState } f
 
 import { FormInputProps } from "@nanobits/react-ui/components/form/FormInput";
 import classNames from "classnames";
-import { useTranslation } from "react-i18next";
 
 export interface AutoCompleteProps extends InputHTMLAttributes<HTMLInputElement> {
     className?: string,
@@ -49,8 +48,6 @@ export const AutoComplete = forwardRef<HTMLInputElement, AutoCompleteProps & For
     },
     ref
 ) => {
-
-    const {t} = useTranslation()
 
     const _className = classNames(
         'n-custom-text-input-class',
@@ -99,7 +96,7 @@ export const AutoComplete = forwardRef<HTMLInputElement, AutoCompleteProps & For
                     type={type}
                     value={value}
                     name={name}
-                    placeholder={placeholder || t('nanobits.components.input.autocomplete.placeholder')}
+                    placeholder={placeholder}
                     aria-describedby={name}
                     invalid={errorMessage ? true : false}
                     onChange={handleChange}

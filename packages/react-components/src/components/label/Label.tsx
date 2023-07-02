@@ -18,7 +18,7 @@ export const Label = forwardRef<HTMLLabelElement, LabelPros>((
     ref
 ) => {
     const _classname = classNames(
-        'font-weight-bolder',
+        'fw-bold',
         required  ? 'label-required' : '',
         'n-custom-text-input-label-class'
     )

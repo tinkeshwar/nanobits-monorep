@@ -4,7 +4,6 @@ import React, { InputHTMLAttributes, forwardRef, useEffect, useRef, useState } f
 
 import { FormSelectProps } from "@nanobits/react-ui/components/form/FormSelect";
 import classNames from "classnames";
-import { useTranslation } from "react-i18next";
 
 export interface SelectOptionProps {
     value: string
@@ -57,8 +56,6 @@ export const SelectInput = forwardRef<HTMLSelectElement, SelectInputProps & Form
     ref
 ) => {
 
-    const {t} = useTranslation()
-
     const _className = classNames(
         'n-custom-select-input-class',
         className
@@ -97,7 +94,7 @@ export const SelectInput = forwardRef<HTMLSelectElement, SelectInputProps & Form
                     feedbackInvalid={requiredText}
                     invalid={errorMessage ? true : false}
                     onChange={handleChange}
-                    options={[{ label: placeholder || t('nanobits.components.input.select.placeholder'), disabled: true }, ...options]}
+                    options={[{ label: placeholder || 'Select here', disabled: true }, ...options]}
                     {...rest}
                 />
                 {(iconRight || textRight) && <Suffix icon={iconRight} text={textRight} required={required} />}
