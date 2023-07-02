@@ -1,6 +1,6 @@
 {
   "name": "@nanobits/react-components",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "description": "React library that provide atom to molecule lable component that are frequently used",
   "author": "Tinkeshwar <tinkeshwar@gmail.com>",
   "homepage": "https://github.com/tinkeshwar/nanobits-monorep#readme",
@@ -49,7 +49,7 @@
     "react-dom": "^18.2.0"
   },
   "dependencies": {
-    "@nanobits/react-fa-icons": "^0.0.2",
-    "@nanobits/react-ui": "^0.0.2"
+    "@nanobits/react-fa-icons": "^0.0.3",
+    "@nanobits/react-ui": "^0.0.3"
   }
 }
