@@ -94,9 +94,9 @@ export const DescriptionInput = forwardRef<HTMLTextAreaElement, DescriptionInput
                     feedbackInvalid={requiredText}
                     {...rest}
                 />
-                {errorMessage && <FormFeedback>{errorMessage}</FormFeedback>}
                 {(iconRight || textRight) && <Suffix icon={iconRight} text={textRight} required={required} />}
             </InputGroup>
+            {errorMessage && <FormFeedback>{errorMessage}</FormFeedback>}
         </React.Fragment>
     )
 })

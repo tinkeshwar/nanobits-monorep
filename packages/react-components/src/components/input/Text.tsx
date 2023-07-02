@@ -90,7 +90,7 @@ export const TextInput = forwardRef<HTMLInputElement, TextInputProps & FormInput
         <React.Fragment>
             {label && <Label labelfor={name} required={required} label={label} />}
             <InputGroup className={_inputGroup}>
-                {(iconLeft || textLeft) && <Prefix icon={iconLeft} text={textLeft} required={required} />}
+                {(iconLeft || textLeft) && <Prefix icon={iconLeft} text={textLeft} />}
                 <FormInput
                     floatingLabel={floatingLabel}
                     className={_className}
@@ -108,9 +108,9 @@ export const TextInput = forwardRef<HTMLInputElement, TextInputProps & FormInput
                     feedbackInvalid={requiredText}
                     {...rest}
                 />
-                {errorMessage && <FormFeedback>{errorMessage}</FormFeedback>}
-                {(iconRight || textRight) && <Suffix icon={iconRight} text={textRight} required={required} />}
+                {(iconRight || textRight) && <Suffix icon={iconRight} text={textRight} />}
             </InputGroup>
+            {errorMessage && <FormFeedback>{errorMessage}</FormFeedback>}
         </React.Fragment>
     )
 })

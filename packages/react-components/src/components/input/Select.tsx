@@ -97,9 +97,9 @@ export const SelectInput = forwardRef<HTMLSelectElement, SelectInputProps & Form
                     options={[{ label: placeholder || 'Select here...', disabled: true }, ...options]}
                     {...rest}
                 />
-                {errorMessage && <FormFeedback>{errorMessage}</FormFeedback>}
                 {(iconRight || textRight) && <Suffix icon={iconRight} text={textRight} required={required} />}
             </InputGroup>
+            {errorMessage && <FormFeedback>{errorMessage}</FormFeedback>}
         </React.Fragment>
     )
 })
