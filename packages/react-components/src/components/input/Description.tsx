@@ -4,6 +4,7 @@ import React, { InputHTMLAttributes, forwardRef, useEffect, useState } from 'rea
 
 import { FormInputProps } from '@nanobits/react-ui/components/form/FormInput';
 import classNames from 'classnames';
+import { useTranslation } from 'react-i18next';
 
 export interface DescriptionInputProps extends InputHTMLAttributes<HTMLTextAreaElement> {
     className?: string,
@@ -36,7 +37,7 @@ export const DescriptionInput = forwardRef<HTMLTextAreaElement, DescriptionInput
         textLeft,
         iconRight,
         textRight,
-        placeholder = 'Enter value here...',
+        placeholder,
         value,
         name,
         error,
@@ -50,6 +51,8 @@ export const DescriptionInput = forwardRef<HTMLTextAreaElement, DescriptionInput
     },
     ref
 ) => {
+
+    const {t} = useTranslation()
 
     const _className = classNames(
         'n-custom-text-input-class',
@@ -86,7 +89,7 @@ export const DescriptionInput = forwardRef<HTMLTextAreaElement, DescriptionInput
                     id={`for-${name}`}
                     value={value}
                     name={name}
-                    placeholder={placeholder}
+                    placeholder={placeholder || t('nanobits.components.input.description.placeholder')}
                     aria-describedby={name}
                     invalid={errorMessage ? true : false}
                     onChange={handleChange}
