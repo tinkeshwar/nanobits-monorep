@@ -1,7 +1,6 @@
 import { FormFeedback, FormInput, InputGroup } from '@nanobits/react-ui';
 import { Label, Prefix, Suffix } from '../label';
 import React, { InputHTMLAttributes, forwardRef, useEffect, useRef, useState } from 'react';
-import { useTranslation } from 'react-i18next';
 import { FormInputProps } from '@nanobits/react-ui/components/form/FormInput';
 import classNames from 'classnames';
 
@@ -51,8 +50,6 @@ export const TextInput = forwardRef<HTMLInputElement, TextInputProps & FormInput
     ref
 ) => {
 
-    const {t} = useTranslation()
-
     const _className = classNames(
         'n-custom-text-input-class',
         className
@@ -101,7 +98,7 @@ export const TextInput = forwardRef<HTMLInputElement, TextInputProps & FormInput
                     type={type}
                     value={value}
                     name={name}
-                    placeholder={placeholder || t('nanobits.components.input.text.placeholder')}
+                    placeholder={placeholder}
                     aria-describedby={name}
                     invalid={errorMessage ? true : false}
                     onChange={handleChange}
