@@ -1,4 +1,4 @@
-import { FormFeedback, FormTextarea, InputGroup } from '@nanobits/react-ui';
+import { FormTextarea, InputGroup } from '@nanobits/react-ui';
 import { Label, Prefix, Suffix } from '../label';
 import React, { InputHTMLAttributes, forwardRef, useEffect, useState } from 'react';
 
@@ -23,7 +23,8 @@ export interface DescriptionInputProps extends InputHTMLAttributes<HTMLTextAreaE
     floatingLabel?: string
     onUpdate?: (value: any) => any
     onChange?: (e: React.ChangeEvent<HTMLTextAreaElement>) => void
-    onValidation?: (value: any) => any
+    onValidation?: (value: any) => any,
+    onBlur?: (value: any) => void
 }
 
 export const DescriptionInput = forwardRef<HTMLTextAreaElement, DescriptionInputProps & FormInputProps>((
@@ -46,6 +47,7 @@ export const DescriptionInput = forwardRef<HTMLTextAreaElement, DescriptionInput
         onUpdate,
         onChange,
         onValidation,
+        onBlur,
         ...rest
     },
     ref
@@ -70,6 +72,21 @@ export const DescriptionInput = forwardRef<HTMLTextAreaElement, DescriptionInput
         throw new Error('Provide onUpdate or onChange to input component.')
     }
 
+    const handleBlur = (event: React.FocusEvent<HTMLTextAreaElement>) => {
+        if (required && !value) {
+            setErrorMessage(requiredText || 'Required field')
+        }
+        if (onValidation) {
+            const validatorResponse = onValidation(event.target.value)
+            if (validatorResponse && validatorResponse.error) setErrorMessage(validatorResponse.message)
+        }
+        if (onBlur) return onBlur(event.target.value)
+    }
+
+    const handleFocus = () => {
+        setErrorMessage(undefined)
+    }
+
     useEffect(() => {
         error ? setErrorMessage(error) : setErrorMessage(undefined)
     }, [error])
@@ -78,7 +95,7 @@ export const DescriptionInput = forwardRef<HTMLTextAreaElement, DescriptionInput
         <React.Fragment>
             {label && <Label labelfor={name} required={required} label={label} />}
             <InputGroup className={_inputGroup}>
-                {(iconLeft || textLeft) && <Prefix icon={iconLeft} text={textLeft} required={required} />}
+                {(iconLeft || textLeft) && <Prefix icon={iconLeft} text={textLeft} />}
                 <FormTextarea
                     floatingLabel={floatingLabel}
                     className={_className}
@@ -91,12 +108,13 @@ export const DescriptionInput = forwardRef<HTMLTextAreaElement, DescriptionInput
                     invalid={errorMessage ? true : false}
                     onChange={handleChange}
                     required={required}
-                    feedbackInvalid={requiredText}
+                    feedbackInvalid={errorMessage}
+                    onBlur={handleBlur}
+                    onFocus={handleFocus}
                     {...rest}
                 />
-                {(iconRight || textRight) && <Suffix icon={iconRight} text={textRight} required={required} />}
+                {(iconRight || textRight) && <Suffix icon={iconRight} text={textRight} />}
             </InputGroup>
-            {errorMessage && <FormFeedback>{errorMessage}</FormFeedback>}
         </React.Fragment>
     )
 })
