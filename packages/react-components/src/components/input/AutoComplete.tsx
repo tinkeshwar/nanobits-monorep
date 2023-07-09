@@ -1,4 +1,4 @@
-import { FormFeedback, FormInput, InputGroup } from "@nanobits/react-ui";
+import { FormInput, InputGroup } from "@nanobits/react-ui";
 import { Label, Prefix, Suffix } from "../label";
 import React, { InputHTMLAttributes, forwardRef, useEffect, useRef, useState } from "react";
 
@@ -102,12 +102,11 @@ export const AutoComplete = forwardRef<HTMLInputElement, AutoCompleteProps & For
                     onChange={handleChange}
                     onBlur={handleBlur}
                     required={required}
-                    feedbackInvalid={requiredText}
+                    feedbackInvalid={requiredText || errorMessage}
                     {...rest}
                 />
                 {(iconRight || textRight) && <Suffix icon={iconRight} text={textRight} required={required} />}
             </InputGroup>
-            {errorMessage && <FormFeedback>{errorMessage}</FormFeedback>}
         </React.Fragment>
     )
 })

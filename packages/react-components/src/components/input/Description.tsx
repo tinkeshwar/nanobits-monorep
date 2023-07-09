@@ -1,4 +1,4 @@
-import { FormFeedback, FormTextarea, InputGroup } from '@nanobits/react-ui';
+import { FormTextarea, InputGroup } from '@nanobits/react-ui';
 import { Label, Prefix, Suffix } from '../label';
 import React, { InputHTMLAttributes, forwardRef, useEffect, useState } from 'react';
 
@@ -91,12 +91,11 @@ export const DescriptionInput = forwardRef<HTMLTextAreaElement, DescriptionInput
                     invalid={errorMessage ? true : false}
                     onChange={handleChange}
                     required={required}
-                    feedbackInvalid={requiredText}
+                    feedbackInvalid={requiredText || errorMessage}
                     {...rest}
                 />
                 {(iconRight || textRight) && <Suffix icon={iconRight} text={textRight} required={required} />}
             </InputGroup>
-            {errorMessage && <FormFeedback>{errorMessage}</FormFeedback>}
         </React.Fragment>
     )
 })

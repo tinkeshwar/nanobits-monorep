@@ -1,4 +1,4 @@
-import { FormFeedback, FormSelect, InputGroup } from "@nanobits/react-ui";
+import { FormSelect, InputGroup } from "@nanobits/react-ui";
 import { Label, Prefix, Suffix } from "../label";
 import React, { InputHTMLAttributes, forwardRef, useEffect, useRef, useState } from "react";
 
@@ -91,7 +91,7 @@ export const SelectInput = forwardRef<HTMLSelectElement, SelectInputProps & Form
                     aria-describedby={name}
                     required={required}
                     disabled={disabled}
-                    feedbackInvalid={requiredText}
+                    feedbackInvalid={requiredText || errorMessage}
                     invalid={errorMessage ? true : false}
                     onChange={handleChange}
                     options={[{ label: placeholder || 'Select here', disabled: true }, ...options]}
@@ -99,7 +99,6 @@ export const SelectInput = forwardRef<HTMLSelectElement, SelectInputProps & Form
                 />
                 {(iconRight || textRight) && <Suffix icon={iconRight} text={textRight} required={required} />}
             </InputGroup>
-            {errorMessage && <FormFeedback>{errorMessage}</FormFeedback>}
         </React.Fragment>
     )
 })
