@@ -8,7 +8,7 @@ export interface TextInputProps extends InputHTMLAttributes<HTMLInputElement> {
     className?: string,
     label?: string
     type?: 'text' | 'email' | 'password' | 'color'
-    required?: boolean
+    ifRequired?: string
     iconLeft?: string
     textLeft?: string
     iconRight?: string
@@ -17,7 +17,6 @@ export interface TextInputProps extends InputHTMLAttributes<HTMLInputElement> {
     value?: any
     name: string
     error?: string
-    requiredText?: string
     floatingLabel?: string
     onUpdate?: (value: any) => any
     onChange?: (e: React.ChangeEvent<HTMLInputElement>) => void
@@ -31,7 +30,7 @@ export const TextInput = forwardRef<HTMLInputElement, TextInputProps & FormInput
         label,
         floatingLabel,
         type = 'text',
-        required,
+        ifRequired,
         iconLeft,
         textLeft,
         iconRight,
@@ -40,7 +39,6 @@ export const TextInput = forwardRef<HTMLInputElement, TextInputProps & FormInput
         value,
         name,
         error,
-        requiredText,
         onUpdate,
         onChange,
         onBlur,
@@ -56,7 +54,7 @@ export const TextInput = forwardRef<HTMLInputElement, TextInputProps & FormInput
     )
 
     const _inputGroup = classNames(
-        required ? 'has-validation' : ''
+        ifRequired ? 'has-validation' : ''
     )
 
     const [errorMessage, setErrorMessage] = useState<string | undefined>(error)
@@ -69,8 +67,8 @@ export const TextInput = forwardRef<HTMLInputElement, TextInputProps & FormInput
     }
 
     const handleBlur = (event: React.FocusEvent<HTMLInputElement>) => {
-        if (required && !value) {
-            setErrorMessage(requiredText || 'Required field')
+        if (ifRequired && !value) {
+            setErrorMessage(ifRequired)
         }
         if (onValidation) {
             const validatorResponse = onValidation(event.target.value)
@@ -93,7 +91,7 @@ export const TextInput = forwardRef<HTMLInputElement, TextInputProps & FormInput
 
     return (
         <React.Fragment>
-            {label && <Label labelfor={name} required={required} label={label} />}
+            {label && <Label labelfor={name} required={!!ifRequired} label={label} />}
             <InputGroup className={_inputGroup}>
                 {(iconLeft || textLeft) && <Prefix icon={iconLeft} text={textLeft} />}
                 <FormInput
@@ -109,8 +107,8 @@ export const TextInput = forwardRef<HTMLInputElement, TextInputProps & FormInput
                     invalid={errorMessage ? true : false}
                     onChange={handleChange}
                     onBlur={handleBlur}
-                    required={required}
-                    feedbackInvalid={requiredText || errorMessage}
+                    required={!!ifRequired}
+                    feedbackInvalid={errorMessage}
                     onFocus={handleFocus}
                     {...rest}
                 />

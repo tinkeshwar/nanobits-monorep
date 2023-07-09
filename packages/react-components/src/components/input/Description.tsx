@@ -8,8 +8,7 @@ import classNames from 'classnames';
 export interface DescriptionInputProps extends InputHTMLAttributes<HTMLTextAreaElement> {
     className?: string,
     label?: string
-    type?: 'text' | 'email' | 'password' | 'color'
-    required?: boolean
+    ifRequired?: string
     iconLeft?: string
     textLeft?: string
     iconRight?: string
@@ -18,7 +17,6 @@ export interface DescriptionInputProps extends InputHTMLAttributes<HTMLTextAreaE
     value?: any
     name: string
     error?: string
-    requiredText?: string
     rows?: number
     floatingLabel?: string
     onUpdate?: (value: any) => any
@@ -31,8 +29,7 @@ export const DescriptionInput = forwardRef<HTMLTextAreaElement, DescriptionInput
     {
         className,
         label,
-        type = 'text',
-        required,
+        ifRequired,
         iconLeft,
         textLeft,
         iconRight,
@@ -41,7 +38,6 @@ export const DescriptionInput = forwardRef<HTMLTextAreaElement, DescriptionInput
         value,
         name,
         error,
-        requiredText,
         rows = 3,
         floatingLabel,
         onUpdate,
@@ -59,7 +55,7 @@ export const DescriptionInput = forwardRef<HTMLTextAreaElement, DescriptionInput
     )
 
     const _inputGroup = classNames(
-        required ? 'has-validation' : ''
+        ifRequired ? 'has-validation' : ''
     )
 
 
@@ -73,8 +69,8 @@ export const DescriptionInput = forwardRef<HTMLTextAreaElement, DescriptionInput
     }
 
     const handleBlur = (event: React.FocusEvent<HTMLTextAreaElement>) => {
-        if (required && !value) {
-            setErrorMessage(requiredText || 'Required field')
+        if (ifRequired && !value) {
+            setErrorMessage(ifRequired || 'Required field')
         }
         if (onValidation) {
             const validatorResponse = onValidation(event.target.value)
@@ -93,7 +89,7 @@ export const DescriptionInput = forwardRef<HTMLTextAreaElement, DescriptionInput
 
     return (
         <React.Fragment>
-            {label && <Label labelfor={name} required={required} label={label} />}
+            {label && <Label labelfor={name} required={!!ifRequired} label={label} />}
             <InputGroup className={_inputGroup}>
                 {(iconLeft || textLeft) && <Prefix icon={iconLeft} text={textLeft} />}
                 <FormTextarea
@@ -107,8 +103,8 @@ export const DescriptionInput = forwardRef<HTMLTextAreaElement, DescriptionInput
                     aria-describedby={name}
                     invalid={errorMessage ? true : false}
                     onChange={handleChange}
-                    required={required}
-                    feedbackInvalid={requiredText || errorMessage}
+                    required={!!ifRequired}
+                    feedbackInvalid={errorMessage}
                     onBlur={handleBlur}
                     onFocus={handleFocus}
                     {...rest}
