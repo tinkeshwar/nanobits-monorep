@@ -36,7 +36,7 @@ export const TextInput = forwardRef<HTMLInputElement, TextInputProps & FormInput
         textLeft,
         iconRight,
         textRight,
-        placeholder,
+        placeholder = 'Enter value here...',
         value,
         name,
         error,
@@ -69,12 +69,18 @@ export const TextInput = forwardRef<HTMLInputElement, TextInputProps & FormInput
     }
 
     const handleBlur = (event: React.FocusEvent<HTMLInputElement>) => {
-        setErrorMessage(undefined)
+        if (required && !value) {
+            setErrorMessage(requiredText || 'Required field')
+        }
         if (onValidation) {
             const validatorResponse = onValidation(event.target.value)
             if (validatorResponse && validatorResponse.error) setErrorMessage(validatorResponse.message)
         }
         if (onBlur) return onBlur(event.target.value)
+    }
+
+    const handleFocus = () => {
+        setErrorMessage(undefined)
     }
 
     const errorExecuted = useRef(true)
@@ -105,6 +111,7 @@ export const TextInput = forwardRef<HTMLInputElement, TextInputProps & FormInput
                     onBlur={handleBlur}
                     required={required}
                     feedbackInvalid={requiredText || errorMessage}
+                    onFocus={handleFocus}
                     {...rest}
                 />
                 {(iconRight || textRight) && <Suffix icon={iconRight} text={textRight} />}
